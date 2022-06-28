@@ -6,6 +6,8 @@
 
 body {
   font-family: 'Open Sans', 'Lato', sans-serif;
+  background-color: black;
+  color: cyan;
 }
 
 h1,
