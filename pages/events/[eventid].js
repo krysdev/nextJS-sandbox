@@ -4,7 +4,7 @@ import { getEventById } from "../../dummy-data";
 import EventSummary from "../../componets/event-detail/EventSummary";
 import EventLogistics from "../../componets/event-detail/EventLogistics";
 import EventContent from "../../componets/event-detail/EventContent";
-
+import ErrorAlert from "../../componets/ui/ErrorAlert";
 
 function EventDetailPage() {
   const router = useRouter();
@@ -12,7 +12,11 @@ function EventDetailPage() {
   const eventID = router.query.eventid; // name of the file (eventid.js) is the dynamic name (key) of the KEY:VALUE of 'query' - so we access the value e1, e2 or e3
   const event = getEventById(eventID); //function from DUMMY-DATA.js
   if (!event) {
-    return <p>NO DATA</p>;
+    return (
+      <ErrorAlert>
+        <p>NO DATA</p>
+      </ErrorAlert>
+    );
   }
 
   return (

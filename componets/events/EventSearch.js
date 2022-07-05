@@ -6,8 +6,8 @@ function EventSearch(props) {
   const yearInputRef = useRef();
   const monthInputRef = useRef();
   
-  function handleSubmit() {
-    event.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
     const selectedYear = yearInputRef.current.value
     const selectedMonth = monthInputRef.current.value
 
