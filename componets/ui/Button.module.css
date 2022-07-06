@@ -1,11 +1,11 @@
-.btn {
+/* .btn {
   text-decoration: none;
   cursor: pointer;
   font: inherit;
-  background-color: #03be9f;
-  border: 1px solid #03be9f;
+  background-color: #5ac0df;
+  
   border-radius: 6px;
-  color: #dafff7;
+  color: #7891ad;
   padding: 0.5rem 1.5rem;
   text-align: center;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
@@ -13,6 +13,27 @@
 
 .btn:hover,
 .btn:active {
-  background-color: #02afa1;
-  border-color: #02afa1;
+  background-color: #007599;
+} */
+
+.btn {
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #ededed;
+	display:inline-block;
+	cursor:pointer;
+	color:#5f5f5f;
+	/* font-family:Arial;
+	font-size:17px; */
+	padding:7px 25px;
+	text-decoration:none;
+}
+.btn:hover {
+	background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+.btn:active {
+	position:relative;
+	top:1px;
 }

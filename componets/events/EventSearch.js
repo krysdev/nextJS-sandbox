@@ -41,7 +41,7 @@ function EventSearch(props) {
           </select>
         </div>
       </div>
-      <Button>Find Events</Button>
+      <Button>Find Events [FORM]</Button>
     </form>
   );
 }

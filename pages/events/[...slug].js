@@ -33,10 +33,10 @@ function FilteredEventsPage() {
     return (
       <>
         <ErrorAlert>
-          <p>Invalid filter</p>
+          <p>Invalid filter (SLUG)</p>
         </ErrorAlert>
         <div className="center">
-          <Button link="/events">Show all events</Button>
+          <Button linkprop="/events">Show all events</Button>
         </div>
       </>
     );
@@ -51,10 +51,10 @@ function FilteredEventsPage() {
     return (
       <>
         <ErrorAlert>
-          <p>No events found</p>
+          <p>No events found (SLUG)</p>
         </ErrorAlert>
         <div className="center">
-          <Button link="/events">Show all events</Button>
+          <Button linkprop="/events">Show all events</Button>
         </div>
       </>
     );

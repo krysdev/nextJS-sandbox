@@ -9,7 +9,7 @@ function AllEventsPage() {
   const router = useRouter();
 
   function onSearch(month, year) {
-    const fullPath = `/events/${year}/${month}`
+    const fullPath = `/events/${year}/${month}`;
     router.push(fullPath);
   }
 

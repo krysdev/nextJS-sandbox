@@ -7,7 +7,7 @@ import style from "./EventItem.module.css";
 import Button from "../ui/Button";
 import DateIcon from "../icons/DateIcon";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
-import AddresIcon from "../icons/AddressIcon";
+import AddressIcon from "../icons/AddressIcon";
 
 function EventItem(props) {
   const { title, image, date, location, id } = props; //destructure props
@@ -29,14 +29,14 @@ function EventItem(props) {
       <div className={style.content}>
         <div className={style.summary}>
           <h2>{title}</h2>
-        </div>
-        <div className={style.date}>
-          <DateIcon />
-          <time>{humanReadableDate}</time>
-        </div>
-        <div className={style.address}>
-          <AddresIcon />
-          <address>{formattedAddress}</address>
+          <div className={style.date}>
+            <DateIcon />
+            <time>{humanReadableDate}</time>
+          </div>
+          <div className={style.address}>
+            <AddressIcon />
+            <address>{formattedAddress}</address>
+          </div>
         </div>
         <div className={style.actions}>
           <Button linkprop={seeEvent}>
