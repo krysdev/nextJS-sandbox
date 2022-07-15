@@ -4,8 +4,8 @@ import path from "path";
 function ProductDetailPage(props) {
   const { singleProduct } = props;
 
-  // this is a fallback state for getStaticPaths
-  if (!singleProduct) return <p>Loading...</p>;
+  // this is a fallback TRUE state for getStaticPaths
+  if (!singleProduct) return <p>Loading...</p>; // the page will be re-rendered after it gets the data, but before 'Loading...' will be shown
 
   return (
     <div>
@@ -29,6 +29,10 @@ export async function getStaticProps(context) {
   const data = await getData();
 
   const product = data.products.find((prdct) => prdct.id === prodId);
+
+  if (!product) {
+    return { notFound: true };
+  }
 
   return {
     props: {
