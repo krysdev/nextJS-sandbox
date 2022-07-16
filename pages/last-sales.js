@@ -7,7 +7,7 @@ const firebaseNode = "sales";
 const firebasePath = firebase + firebaseNode + ".json";
 
 function lastSalesPage(props) {
-  const [sales, setSales] = useState();   // sales set to 'undefined'
+  const [sales, setSales] = useState(); // sales set to 'undefined'
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -54,27 +54,25 @@ function lastSalesPage(props) {
 
         setSales(transformedData); // 'sales' set to Array
         setIsLoading(false);
-
-        function newFunction() {
-          console.log(transformedData);
-        }
       });
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
 
-  // Without this IF there will be an error wihle "sales.map", because 'sales' is initially undefined 
+  // Without this IF there will be an error wihle "sales.map", because 'sales' is initially undefined
   // and it only gets some data after a FETCH wich happens in useEffect. The page is re-rendered after useEffect
   if (!sales) {
-    return <p>No data yet</p> // in fact this is the prerenderd version of the page, data is fetched after the page is loaded for the first time
+    return <p>No data yet</p>; // in fact this is the prerenderd version of the page, data is fetched after the page is loaded for the first time
   }
 
   return (
     <ul>
-      {sales.map(item =>(
-        <li key={item.id}>{item.username} - {item.volume}</li>
+      {sales.map((item) => (
+        <li key={item.id}>
+          {item.username} - {item.volume}
+        </li>
       ))}
     </ul>
   );
