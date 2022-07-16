@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
 
 const firebase =
@@ -6,7 +5,7 @@ const firebase =
 const firebaseNode = "sales";
 const firebasePath = firebase + firebaseNode + ".json";
 
-function lastSalesPage(props) {
+function LastSalesPage() {
   const [sales, setSales] = useState(); // sales set to 'undefined'
   const [isLoading, setIsLoading] = useState(false);
 
@@ -78,4 +77,4 @@ function lastSalesPage(props) {
   );
 }
 
-export default lastSalesPage;
+export default LastSalesPage;
