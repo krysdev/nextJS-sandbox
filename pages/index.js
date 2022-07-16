@@ -1,6 +1,6 @@
 import fs from "fs/promises";
-import Link from "next/link";
 import path from "path";
+import Link from "next/link";
 
 function HomePage(props) {
   const { products } = props;
