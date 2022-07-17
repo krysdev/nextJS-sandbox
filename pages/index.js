@@ -3,11 +3,11 @@ import path from "path";
 import Link from "next/link";
 
 function HomePage(props) {
-  const { products } = props;
+  const { productsdata } = props;
 
   return (
     <ul>
-      {products.map((listel) => (
+      {productsdata.map((listel) => (
         <li key={listel.id}><Link href={`products/${listel.id}`}>{listel.title}</Link></li>
       ))}
     </ul>
@@ -32,7 +32,7 @@ export async function getStaticProps(context) {
   }
 
   return {
-    props: { products: data.products },
+    props: { productsdata: data.products },
     revalidate: 1000,
   };
 }
