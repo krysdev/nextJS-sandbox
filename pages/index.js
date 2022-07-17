@@ -19,7 +19,7 @@ function HomePage() {
         <span>All events</span>
       </Button>
       <br />
-      <Button handleClick={funHandleClick}>Google</Button>
+      <Button handleClick={funHandleClick}>[Console Log]</Button>
     </div>
   );
 }
