@@ -1,19 +1,17 @@
-import { getFeaturedEvents } from "../dummy-data";
+import { getFeaturedEvents } from "../componets/helpers/api-util";
 import EventList from "../componets/events/EventList";
 
 import Button from "../componets/ui/Button";
 
-function HomePage() {
-  const featuredEvents = getFeaturedEvents(); //function from DUMMY-DATA.js
-
+function HomePage(props) {
   function funHandleClick() {
-    console.log("xxxxx")
+    console.log(".xXxXxXx.");
   }
 
   return (
     <div>
       <h1>HOME</h1>
-      <EventList items={featuredEvents} />
+      <EventList items={props.featured} />
 
       <Button linkprop="/events">
         <span>All events</span>
@@ -22,6 +20,14 @@ function HomePage() {
       <Button handleClick={funHandleClick}>[Console Log]</Button>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const featuredEvents = await getFeaturedEvents();
+  return {
+    props: { featured: featuredEvents },
+    // revalidate: 60 // seconds
+  };
 }
 
 export default HomePage;
