@@ -16,8 +16,7 @@ export async function getAllEvents() {
       ...data[record],
     });
   }
-  // console.log(transformedData)
-  
+
   return transformedData;
 }
 
@@ -26,8 +25,7 @@ export async function getFeaturedEvents() {
   return allEvents.filter((event) => event.isFeatured);
 }
 
-//! Firebase structure
-/*
+/*  //! Firebase structure
 
 {
   "events": {
