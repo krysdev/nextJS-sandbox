@@ -9,6 +9,7 @@ export async function getAllEvents() {
   //error handling needed
 
   const transformedData = [];
+
   // transform Object into Array
   for (const record in data) {
     transformedData.push({
