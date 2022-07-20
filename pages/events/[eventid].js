@@ -1,16 +1,13 @@
-import { useRouter } from "next/router";
 import { Fragment } from "react";
-import { getEventById } from "../../dummy-data";
+import { getAllEvents, getEventById } from "../../componets/helpers/api-util";
 import EventSummary from "../../componets/event-detail/EventSummary";
 import EventLogistics from "../../componets/event-detail/EventLogistics";
 import EventContent from "../../componets/event-detail/EventContent";
 import ErrorAlert from "../../componets/ui/ErrorAlert";
 
-function EventDetailPage() {
-  const router = useRouter();
+function EventDetailPage(props) {
+  const event = props.singleEvent;
 
-  const eventID = router.query.eventid; // name of the file (eventid.js) is the dynamic name (key) of the KEY:VALUE of 'query' - so we access the value e1, e2 or e3
-  const event = getEventById(eventID); //function from DUMMY-DATA.js
   if (!event) {
     return (
       <ErrorAlert>
@@ -34,6 +31,36 @@ function EventDetailPage() {
       </EventContent>
     </Fragment>
   );
+}
+
+export async function getStaticProps(context) {
+  const eventID = context.params.eventid; // eventid -> name of the file
+  const justOneEvent = await getEventById(eventID); //function from API-UTIL.js
+
+  return {
+    props: { singleEvent: justOneEvent },
+    // revalidate: 60 // seconds
+  };
+}
+
+export async function getStaticPaths() {
+
+  const allevents = await getAllEvents();
+  
+  const paramsForPaths = allevents.map((event) => ({
+    params: { eventid: event.id }, // eventid -> name of the file
+  }));
+
+  // const paramsForPaths = [
+  //   { params: { pageid: 'p1' } },  // pageid is the name of the dynamic file
+  //   { params: { pageid: 'p2' } },
+  //   { params: { pageid: 'p3' } }
+  // ]
+
+  return {
+    paths: paramsForPaths,
+    fallback: false,
+  };
 }
 
 export default EventDetailPage;
