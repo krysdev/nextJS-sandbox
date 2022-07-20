@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { getAllEvents, getEventById } from "../../componets/helpers/api-util";
+import {getEventById, getFeaturedEvents} from "../../componets/helpers/api-util";
 import EventSummary from "../../componets/event-detail/EventSummary";
 import EventLogistics from "../../componets/event-detail/EventLogistics";
 import EventContent from "../../componets/event-detail/EventContent";
@@ -8,11 +8,13 @@ import ErrorAlert from "../../componets/ui/ErrorAlert";
 function EventDetailPage(props) {
   const event = props.singleEvent;
 
+  // fallback check (for 'true')
   if (!event) {
     return (
-      <ErrorAlert>
-        <p>NO DATA</p>
-      </ErrorAlert>
+      <div className="center">Loading...</div>
+      // <ErrorAlert>
+      //   <p>NO DATA</p>
+      // </ErrorAlert>
     );
   }
 
@@ -39,13 +41,13 @@ export async function getStaticProps(context) {
 
   return {
     props: { singleEvent: justOneEvent },
-    // revalidate: 60 // seconds
+    revalidate: 60 // seconds
   };
 }
 
 export async function getStaticPaths() {
 
-  const allevents = await getAllEvents();
+  const allevents = await getFeaturedEvents();
   
   const paramsForPaths = allevents.map((event) => ({
     params: { eventid: event.id }, // eventid -> name of the file
@@ -57,9 +59,13 @@ export async function getStaticPaths() {
   //   { params: { pageid: 'p3' } }
   // ]
 
+
+// false - we specified ALL pages to pre-render (anything else is 404)
+// true - only some of pages static, the rest on the fly (fallback checking needed - 'Loading...' or skeleton page)
+// 'blocking' - page fully generated on the server before sent (so fallback checking not needed, but it takes a while before showing something)
   return {
     paths: paramsForPaths,
-    fallback: false,
+    fallback: true,
   };
 }
 
