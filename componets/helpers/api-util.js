@@ -1,7 +1,7 @@
 const firebase =
   "https://nextjs-udemy-32a96-default-rtdb.europe-west1.firebasedatabase.app/";
 const firebaseNode = "events";
-const firebasePath = firebase + firebaseNode + ".json";
+export const firebasePath = firebase + firebaseNode + ".json";
 
 export async function getAllEvents() {
   const response = await fetch(firebasePath);
