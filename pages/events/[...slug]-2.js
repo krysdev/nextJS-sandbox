@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import useSWR from "swr";
-
-import { firebasePath } from "../../componets/helpers/api-util";
 import EventList from "../../componets/events/EventList";
 import ResultsTitle from "../../componets/events/ResultsTitle";
 import Button from "../../componets/ui/Button";
 import ErrorAlert from "../../componets/ui/ErrorAlert";
+import useSWR from "swr";
+import { firebasePath } from "../../componets/helpers/api-util";
 
 function FilteredEventsPage() {
   const [events, setEvents] = useState();
   const router = useRouter();
-  // console.log('xx'+router.query.slug)
-  const filterData = router.query.slug;
-  // const filterData = [2021, 5];
-  // const { data, error } = useSWR(firebasePath);
-  const { data, error } = useSWR("https://nextjs-udemy-32a96-default-rtdb.europe-west1.firebasedatabase.app/events.json");
 
+  const filterData = router.query.slug;
+
+  const { data, error } = useSWR(firebasePath,
+    (url) => fetch(url)
+    .then((res) => res.json())
+  );
 
   useEffect(() => {
     if (data) {
