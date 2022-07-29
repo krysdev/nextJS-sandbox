@@ -3,6 +3,7 @@ import EventList from "../../componets/events/EventList";
 import EventSearch from "../../componets/events/EventSearch";
 import { Fragment } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function AllEventsPage(props) {
   const events = props.events;
@@ -15,6 +16,10 @@ function AllEventsPage(props) {
 
   return (
     <Fragment>
+      <Head>
+        <title>All Events</title>
+        <meta name="description" content="what is it all about" />
+      </Head>
       <h1>ALL EVENTS</h1>
       <EventSearch onSearch={onSearch} />
       <EventList items={events} />
@@ -23,10 +28,10 @@ function AllEventsPage(props) {
 }
 
 export async function getStaticProps(context) {
-  const allevents = await getAllEvents()
+  const allevents = await getAllEvents();
   return {
     props: { events: allevents },
-    revalidate: 60 // seconds
+    revalidate: 60, // seconds
   };
 }
 

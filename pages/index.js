@@ -1,7 +1,6 @@
 import { getFeaturedEvents } from "../componets/helpers/api-util";
 import EventList from "../componets/events/EventList";
-
-import Button from "../componets/ui/Button";
+import Head from "next/head";
 
 function HomePage(props) {
   function funHandleClick() {
@@ -11,13 +10,11 @@ function HomePage(props) {
   return (
     <div>
       <h1>HOME</h1>
+      <Head>
+        <title>Home Page</title>
+        <meta name="description" content="what is it all about" />
+      </Head>
       <EventList items={props.featured} />
-
-      <Button linkprop="/events">
-        <span>All events</span>
-      </Button>
-      <br />
-      <Button handleClick={funHandleClick}>[Console Log]</Button>
     </div>
   );
 }
@@ -26,7 +23,7 @@ export async function getStaticProps() {
   const featuredEvents = await getFeaturedEvents();
   return {
     props: { featured: featuredEvents },
-    revalidate: 1800 // seconds (30min)
+    revalidate: 1800, // seconds (30min)
   };
 }
 
