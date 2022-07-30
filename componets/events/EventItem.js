@@ -1,6 +1,3 @@
-import pic1 from "../../public/images/1.jpg";
-import pic2 from "../../public/images/2.jpg";
-import pic3 from "../../public/images/3.jpg";
 import Image from "next/image";
 
 import style from "./EventItem.module.css";
@@ -24,8 +21,8 @@ function EventItem(props) {
 
   return (
     <li className={style.item}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={"/" + image} alt={title} />
+      {/* <img src={"/" + image} alt={title} /> */}
+      <Image src={"/" + image} alt={title} width={250} height={160} />
       <div className={style.content}>
         <div className={style.summary}>
           <h2>{title}</h2>

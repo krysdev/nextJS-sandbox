@@ -6,15 +6,15 @@ function EventList(props) {
 
   return (
     <ul className={style.list}>
-      {items.map((dummyevent) => (
+      {items.map((eventslist) => (
         <EventItem
-          key={dummyevent.id}
-          id={dummyevent.id}
-          title={dummyevent.title}
-          location={dummyevent.location}
-          date={dummyevent.date}
-          image={dummyevent.image}
-          // image={dummyevent.imageNext}
+          key={eventslist.id}
+          id={eventslist.id}
+          title={eventslist.title}
+          location={eventslist.location}
+          date={eventslist.date}
+          image={eventslist.image}
+          // image={eventslist.imageNext}
         />
       ))}
     </ul>
